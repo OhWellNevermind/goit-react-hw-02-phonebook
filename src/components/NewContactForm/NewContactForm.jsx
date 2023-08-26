@@ -21,9 +21,7 @@ export const NewContactForm = ({ addNew, setName, setNumber }) => {
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
-      onSubmit={async values => {
-        await setName(values.name);
-        await setNumber(values.number);
+      onSubmit={values => {
         addNew(values);
       }}
       validationSchema={userSchema}

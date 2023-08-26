@@ -13,8 +13,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addNewContact = newContact => {
@@ -26,24 +24,10 @@ export class App extends Component {
       alert(`${newContact.name} is already in contacts`);
       return;
     }
+
     this.setState(prevState => ({
-      contacts: [
-        ...prevState.contacts,
-        { id: nanoid(), name: this.state.name, number: this.state.number },
-      ],
+      contacts: [...prevState.contacts, { id: nanoid(), ...newContact }],
     }));
-  };
-
-  setName = newName => {
-    this.setState({
-      name: newName,
-    });
-  };
-
-  setNumber = newNumber => {
-    this.setState({
-      number: newNumber,
-    });
   };
 
   onSearch = value => {
