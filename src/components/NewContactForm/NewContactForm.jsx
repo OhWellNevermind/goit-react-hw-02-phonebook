@@ -1,5 +1,5 @@
-import { Formik, Field, ErrorMessage, useFormik } from 'formik';
-import { FormLayout, Label, StyledForm } from './NewContactForm.styled';
+import { useFormik } from 'formik';
+import { FormLayout, Label } from './NewContactForm.styled';
 import * as Yup from 'yup';
 import propTypes from 'prop-types';
 import { Button, TextField } from '@mui/material';
@@ -43,7 +43,6 @@ export const NewContactForm = ({ addNew }) => {
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           ></TextField>
-          {/* <ErrorMessage name="name"></ErrorMessage> */}
         </Label>
         <Label>
           <TextField
@@ -57,7 +56,6 @@ export const NewContactForm = ({ addNew }) => {
             error={formik.touched.number && Boolean(formik.errors.number)}
             helperText={formik.touched.number && formik.errors.number}
           />
-          {/* <ErrorMessage name="number"></ErrorMessage> */}
         </Label>
         <Button variant="outlined" type="submit">
           Add new contact

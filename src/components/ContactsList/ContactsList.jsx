@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import { List, ListItem, Button } from '@mui/material';
+import { List, Button } from '@mui/material';
 import { ContactListItem } from './ContactList.styled';
 
 export const ContactsList = ({ onDelete, contacts }) => {
