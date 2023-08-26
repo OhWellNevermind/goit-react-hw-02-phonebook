@@ -63,8 +63,11 @@ export class App extends Component {
           onDelete={this.onDeleteContact}
           contacts={visibleContacts}
         ></ContactsList>
-        {!visibleContacts.length && <p>There is no contacts</p>}
-        <SearchBar onSearch={this.onSearch}></SearchBar>
+        {!visibleContacts.length ? (
+          <p>There is no contacts</p>
+        ) : (
+          <SearchBar onSearch={this.onSearch}></SearchBar>
+        )}
       </>
     );
   }
