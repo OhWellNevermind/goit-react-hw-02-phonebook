@@ -59,15 +59,12 @@ export class App extends Component {
           setNumber={this.setNumber}
         ></NewContactForm>
         <h2>Contacts</h2>
+        <SearchBar onSearch={this.onSearch}></SearchBar>
         <ContactsList
           onDelete={this.onDeleteContact}
           contacts={visibleContacts}
         ></ContactsList>
-        {!visibleContacts.length ? (
-          <p>There is no contacts</p>
-        ) : (
-          <SearchBar onSearch={this.onSearch}></SearchBar>
-        )}
+        {!visibleContacts.length && <p>There is no contacts</p>}
       </>
     );
   }

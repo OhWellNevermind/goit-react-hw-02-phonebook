@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 export const SearchBar = ({ onSearch }) => {
   return (
     <div>
@@ -12,4 +13,8 @@ export const SearchBar = ({ onSearch }) => {
       </label>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  onSearch: propTypes.func,
 };

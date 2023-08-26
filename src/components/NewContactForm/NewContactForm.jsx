@@ -1,6 +1,7 @@
 import { Formik, Field, ErrorMessage } from 'formik';
 import { Label, StyledForm } from './NewContactForm.styled';
 import * as Yup from 'yup';
+import propTypes from 'prop-types';
 
 const userSchema = Yup.object({
   name: Yup.string()
@@ -17,7 +18,7 @@ const userSchema = Yup.object({
     .required('Number is a required field'),
 });
 
-export const NewContactForm = ({ addNew, setName, setNumber }) => {
+export const NewContactForm = ({ addNew }) => {
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
@@ -39,4 +40,8 @@ export const NewContactForm = ({ addNew, setName, setNumber }) => {
       </StyledForm>
     </Formik>
   );
+};
+
+NewContactForm.propTypes = {
+  addNew: propTypes.func,
 };
