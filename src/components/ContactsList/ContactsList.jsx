@@ -1,26 +1,29 @@
 import propTypes from 'prop-types';
+import { List, ListItem, Button } from '@mui/material';
+import { ContactListItem } from './ContactList.styled';
 
 export const ContactsList = ({ onDelete, contacts }) => {
   return (
     <div>
-      <ul>
+      <List>
         {contacts.map(contact => {
           return (
-            <li key={contact.id}>
+            <ContactListItem key={contact.id}>
               <p>Name: {contact.name}</p>
               <p>Number: {contact.number}</p>
-              <button
+              <Button
+                variant="contained"
                 value={contact.id}
                 onClick={evt => {
                   onDelete(evt.target.value);
                 }}
               >
                 Delete
-              </button>
-            </li>
+              </Button>
+            </ContactListItem>
           );
         })}
-      </ul>
+      </List>
     </div>
   );
 };

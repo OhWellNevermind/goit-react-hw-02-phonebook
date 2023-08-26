@@ -3,6 +3,7 @@ import { ContactsList } from './ContactsList/ContactsList';
 import { NewContactForm } from './NewContactForm/NewContactForm';
 import { nanoid } from 'nanoid';
 import { SearchBar } from './SearchBar/SearchBar';
+import { Container } from '@mui/material';
 
 export class App extends Component {
   state = {
@@ -51,7 +52,7 @@ export class App extends Component {
     );
 
     return (
-      <>
+      <Container>
         <h1>PhoneBook</h1>
         <NewContactForm
           addNew={this.addNewContact}
@@ -65,7 +66,7 @@ export class App extends Component {
           contacts={visibleContacts}
         ></ContactsList>
         {!visibleContacts.length && <p>There is no contacts</p>}
-      </>
+      </Container>
     );
   }
 }

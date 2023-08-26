@@ -1,10 +1,13 @@
 import propTypes from 'prop-types';
+import { TextField } from '@mui/material';
+
 export const SearchBar = ({ onSearch }) => {
   return (
     <div>
       <label>
-        <p>Search by name</p>
-        <input
+        <TextField
+          variant="standard"
+          label="Search by name"
           onChange={evt => {
             onSearch(evt.target.value);
           }}

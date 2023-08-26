@@ -12,3 +12,9 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
 `;
+
+export const FormLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;

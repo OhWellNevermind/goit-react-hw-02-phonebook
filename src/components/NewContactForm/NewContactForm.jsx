@@ -1,7 +1,8 @@
-import { Formik, Field, ErrorMessage } from 'formik';
-import { Label, StyledForm } from './NewContactForm.styled';
+import { Formik, Field, ErrorMessage, useFormik } from 'formik';
+import { FormLayout, Label, StyledForm } from './NewContactForm.styled';
 import * as Yup from 'yup';
 import propTypes from 'prop-types';
+import { Button, TextField } from '@mui/material';
 
 const userSchema = Yup.object({
   name: Yup.string()
@@ -19,26 +20,50 @@ const userSchema = Yup.object({
 });
 
 export const NewContactForm = ({ addNew }) => {
+  const formik = useFormik({
+    initialValues: { name: '', number: '' },
+    validationSchema: userSchema,
+    onSubmit: values => {
+      addNew(values);
+    },
+  });
+
   return (
-    <Formik
-      initialValues={{ name: '', number: '' }}
-      onSubmit={values => {
-        addNew(values);
-      }}
-      validationSchema={userSchema}
-    >
-      <StyledForm>
+    <form onSubmit={formik.handleSubmit}>
+      <FormLayout>
         <Label>
-          <Field name="name" type="text"></Field>
-          <ErrorMessage name="name"></ErrorMessage>
+          <TextField
+            id="name"
+            value={formik.values.name}
+            label="Name"
+            name="name"
+            type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          ></TextField>
+          {/* <ErrorMessage name="name"></ErrorMessage> */}
         </Label>
         <Label>
-          <Field name="number" type="tel" />
-          <ErrorMessage name="number"></ErrorMessage>
+          <TextField
+            id="number"
+            value={formik.values.number}
+            label="Number"
+            name="number"
+            type="tel"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.number && Boolean(formik.errors.number)}
+            helperText={formik.touched.number && formik.errors.number}
+          />
+          {/* <ErrorMessage name="number"></ErrorMessage> */}
         </Label>
-        <button type="submit">Submit</button>
-      </StyledForm>
-    </Formik>
+        <Button variant="outlined" type="submit">
+          Add new contact
+        </Button>
+      </FormLayout>
+    </form>
   );
 };
 
